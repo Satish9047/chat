@@ -66,30 +66,31 @@ const Register = () => {
 
 
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center h-screen">
+      <div className="flex flex-col justify-center items-center h-full">
       <div>
-        <h2>Register</h2>
+        <h2 className="text-5xl font-thin">Register</h2>
       </div>
-      <form onSubmit={handleRegister}>
+      <form onSubmit={handleRegister} className="flex flex-col justify-center space-y-1">
 
         <label htmlFor="email">Email</label>
-        <input name="email" onChange={handleChange} value={input.email} />
+        <input name="email" id="email" onChange={handleChange} value={input.email} className="sm:py-1 border border-spacing-2 border-blue-900"/>
 
         <label htmlFor="username">User Name</label>
-        <input name="username" onChange={handleChange} value={input.username} />
+        <input name="username" id="username" onChange={handleChange} value={input.username} className="sm:py-1 border border-spacing-2 border-blue-900"/>
 
         <label htmlFor="password">Password</label>
-        <input name="password" onChange={handleChange} value={input.password} />
+        <input name="password" id="password" onChange={handleChange} value={input.password} className=" sm:py-1 border border-spacing-2 border-blue-900"/>
 
         <label htmlFor="confirmPassword">Confirm Password</label>
-        <input name="confirmPassword" onChange={handleChange} value={input.confirmPassword} />
+        <input name="confirmPassword" id='confirmPassword' onChange={handleChange} value={input.confirmPassword} className="sm:py-1 border border-spacing-2 border-blue-900"/>
 
-        <button type="submit">Register</button>
+        <button type="submit" className="my-2 py-1 sm:py-2 bg-blue-500 hover:bg-blue-600 active:bg-blue-700">Register</button>
 
-        <span>Already have an account? <Link to="/login">Login here</Link></span>
+        <span>Already have an account? <Link to="/login" className=" text-blue-500 hover:text-blue-600 active:text-blue-700">Login here</Link></span>
       </form>
 
-
+      </div>
     </div>
   )
 }

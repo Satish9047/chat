@@ -62,23 +62,25 @@ const Login = () => {
 
   }
   return (
-    <div>
-      <h2>
+    <div className=" flex flex-col items-center justify-center h-screen">
+      <div className="h-full flex flex-col justify-center items-center">
+      <h2 className="text-5xl font-thin">
         Login
       </h2>
       
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} className="flex flex-col justify-center space-y-2">
         <label htmlFor="email">Email</label>
-        <input type="text" id="email" name="email" onChange={handleChange} value={input.email} />
+        <input type="text" id="email" name="email" onChange={handleChange} value={input.email} className="sm:py-1 border border-spacing-2 border-blue-900"/>
 
         <label htmlFor="password">Password</label>
-        <input type="text" id="password" name="password" onChange={handleChange} value={input.password} />
+        <input type="text" id="password" name="password" onChange={handleChange} value={input.password} className="sm:py-1 border border-spacing-2 border-blue-900"/>
 
-        <button type="submit">Login</button>
+        <button type="submit" className="my-2 py-1 bg-blue-500 hover:bg-blue-600 active:bg-blue-700">Login</button>
 
-        <span> Didnot have an account? <Link to="/register">Register Here</Link></span>
+        <span> Didnot have an account? <Link to="/register" className=" text-blue-500 hover:text-blue-600 active:text-blue-700">Register Here</Link></span>
         
       </form>
+      </div>
 
     </div>
   )
