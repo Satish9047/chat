@@ -4,16 +4,19 @@ import {io} from "socket.io-client";
 const ChatBox = () => {
     const [socket, setSocket] = useState(null);
     const [message, setMessage] = useState({message: ""});
-    // const [resMessage, setResMessage] = useState({resMessage: ""})
+    const [resMessage, setResMessage] = useState([])
 
     useEffect(() => {
         const newSocket = io("http://localhost:3000");
         setSocket(newSocket);
+
+        newSocket.on("receiveMessage", (message)=>{
+            setResMessage((prevMessages)=>[...prevMessages, message]);
+        })
         
     
         return () => {
           newSocket.disconnect();
-          
         };
       }, []);
 
@@ -35,16 +38,14 @@ const ChatBox = () => {
   return (
     <div>
         <div>
-            <img/>
+            <img alt="user"/>
             <h3>username</h3>
         </div>
-        {/* <div>
-            {
-                resMessage.map((reply, index)=>{
-                    <p id={index}>{reply}</p>
-                })
-            }
-        </div> */}
+        <div>
+            {resMessage.map((reply, index) => (
+                <p key={index}>{reply}</p>
+            ))}
+        </div>
         <form onSubmit={handleSendMessage}>
             <textarea onChange={handleChange} name="message" value={message.message}/>
             <button type="submit">send</button>
