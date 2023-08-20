@@ -7,6 +7,7 @@ const http = require("http");
 
 const app = express();
 const router = require("./router/router");
+const { log } = require("console");
 require("dotenv").config();
 
 
@@ -17,7 +18,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-//creating socket io for backend
 
 //Connecting MongoDB 
 mongoose.connect(`${process.env.MONGODB_URL}`)
@@ -45,5 +45,12 @@ const io = require("socket.io")(server, {
 })
 
 io.on("connection", (socket)=>{
-    console.log("connected to socket.io")
+    console.log("connected to socket.io");
+    console.log(socket.id);
+
+    socket.on("sendMessage", (message)=>{
+        console.log(message);
+        socket.emit(message);
+    })
 })
+
