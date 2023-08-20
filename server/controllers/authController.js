@@ -4,7 +4,7 @@ const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 
 const saltRound = 10;
-const secret = "jwtSecret"
+const secret = `${process.env.JWT_SECRET}`
 
 
 const registerController = async (req, res)=>{
@@ -82,9 +82,33 @@ const loginController = async (req, res)=>{
     })
 }
 
+const verifyChatController = (req, res)=>{
+    console.log(req.headers);
+    const {authorization}=req.headers;
+
+    if(!authorization){
+        return res.status(400).json({error: "No authorization provided"})
+    }
+
+    const jwtToken = authorization.split(" ")[1];
+
+    jwt.verify(jwtToken, secret, (error, decoded)=>{
+        if(error){
+            console.error(error);
+             return res.status(500).json({error: "internal server error"})
+        }
+        if(decoded){
+             return res.status(200).json({success: "valid authentication"})
+        } else{
+            return res.status(400).json({error: "invalid authentication"})
+        }
+    })
+}
+
 
 
 module.exports = {
     loginController,
-    registerController
+    registerController,
+    verifyChatController
 };

@@ -6,6 +6,7 @@ const ChatBox = () => {
     const [message, setMessage] = useState({message: ""});
     const [resMessage, setResMessage] = useState([])
 
+//making socket reactivity using use effect
     useEffect(() => {
         const newSocket = io("http://localhost:3000");
         setSocket(newSocket);
@@ -13,19 +14,18 @@ const ChatBox = () => {
         newSocket.on("receiveMessage", (message)=>{
             setResMessage((prevMessages)=>[...prevMessages, message]);
         })
-        
     
         return () => {
           newSocket.disconnect();
         };
       }, []);
 
-   
-
-
+//handle Change    
     const handleChange = (e)=>{
         setMessage({...message, [e.target.name]: e.target.value})
     }
+
+//handle sending Messages
     const handleSendMessage = (e)=>{
         e.preventDefault();
         if (socket) {
