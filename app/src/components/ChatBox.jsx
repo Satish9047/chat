@@ -36,20 +36,24 @@ const ChatBox = () => {
   }
 
   return (
-    <div>
-        <div>
+    <div className="flex flex-col h-full w-full">
+        <div className="flex justify-between bg-[#28604c]">
             <img alt="user"/>
             <h3>username</h3>
+            <button>setting</button>
         </div>
-        <div>
-            {resMessage.map((reply, index) => (
-                <p key={index}>{reply}</p>
-            ))}
+        <div className=" bg-[#2C3333] h-full flex-grow text-slate-100">
+            <div className="px-4 py-2 flex-grow">
+                {resMessage.map((reply, index) => (
+                    <p key={index}>{reply}</p>
+                ))}
+            </div>
         </div>
-        <form onSubmit={handleSendMessage}>
-            <textarea onChange={handleChange} name="message" value={message.message}/>
-            <button type="submit">send</button>
+        <form onSubmit={handleSendMessage} className=" p-2 flex flex-row bg-[#2C3333]">
+            <textarea onChange={handleChange} name="message" value={message.message} className="w-full"/>
+            <button type="submit" className="bg-[#309088] w-1/12 ml-2">send</button>
         </form>
+        
     </div>
   )
 }

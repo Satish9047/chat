@@ -85,7 +85,7 @@ const Register = () => {
         <label htmlFor="confirmPassword">Confirm Password</label>
         <input name="confirmPassword" id='confirmPassword' onChange={handleChange} value={input.confirmPassword} className="sm:py-1 border border-spacing-2 border-blue-900"/>
 
-        <button type="submit" className="my-2 py-1 sm:py-2 bg-blue-500 hover:bg-blue-600 active:bg-blue-700">Register</button>
+        <button type="submit" className="my-2 py-1 sm:py-2 bg-[#5B9A8B] hover:bg-blue-600 active:bg-blue-700">Register</button>
 
         <span>Already have an account? <Link to="/login" className=" text-blue-500 hover:text-blue-600 active:text-blue-700">Login here</Link></span>
       </form>

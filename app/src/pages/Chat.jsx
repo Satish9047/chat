@@ -1,6 +1,8 @@
-import { useEffect } from "react"
-import ChatBox from "../components/ChatBox"
-import { useNavigate } from "react-router-dom"
+import { useEffect } from "react";
+import ChatBox from "../components/ChatBox";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../components/navbar";
+import FriendList from "../components/friendList";
 
 
 const Chat = () => {
@@ -32,8 +34,14 @@ const Chat = () => {
   
 
   return (
-    <div>
-      <ChatBox />
+    <div className=" flex flex-col h-screen w-screen">
+      <div>
+        <Navbar />
+      </div>
+        <div className=" flex w-screen h-full">
+          <FriendList />
+          <ChatBox />  
+        </div>
     </div>
   )
 }
