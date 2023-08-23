@@ -4,12 +4,12 @@ const mongoose = require("mongoose");
 const helmet = require("helmet");
 const http = require("http");
 const {Server} = require("socket.io");
-
+const router = require("./router/router");
 
 const app = express();
-const router = require("./router/router");
-const { log } = require("console");
+// const { log } = require("console");
 require("dotenv").config();
+app.use(cors())
 
 //Socket.io
 const httpServer = http.createServer(app);
