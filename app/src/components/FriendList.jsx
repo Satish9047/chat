@@ -29,9 +29,9 @@ const FriendList = () => {
   return (
     <div className="flex flex-col w-2/12 bg-[#272829]">
       { users.map((user, index)=>(
-        <div className="m-3 flex h-12 w-full bg-[#5B9A8B]" key={index}>
-            <img src={user.img} width={20} height={20} alt="profile"/>
-              <div className="flex flex-col" >
+        <div className="m-3 flex h-12 bg-[#6a706f]" key={index}>
+            <img src={user.img} width={40} height={20} alt="profile"/>
+              <div className="flex flex-col px-1" >
                 <h3>{user.username}</h3>
                 <p>latest message</p>
               </div>

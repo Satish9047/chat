@@ -9,7 +9,6 @@ const router = require("./router/router");
 const app = express();
 // const { log } = require("console");
 require("dotenv").config();
-app.use(cors())
 
 //Socket.io
 const httpServer = http.createServer(app);
@@ -49,7 +48,7 @@ io.on("connection", (socket)=>{
 
     socket.on("sendMessage", (message)=>{
         console.log(message);
-        io.emit("receiveMessage", message);
+        socket.broadcast.emit("receiveMessage", message);
     })
 })
 
